@@ -96,7 +96,20 @@ export default function MyDashboard() {
         {/* Bottom User Info & Role Switcher */}
       </aside>
       {/* Right Main Content */}
-      <main className="flex-1">MAIN CONTENT</main>
+      <main className="flex-1">
+        {/* Top Header */}
+        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8">
+          <h1 className="text-xl font-bold text-slate-900 tracking-tight">
+            Order Overview Dashboard
+          </h1>
+          <div className="flex items-center">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Connected
+            </span>
+          </div>
+        </header>
+      </main>
     </div>
   );
 }
