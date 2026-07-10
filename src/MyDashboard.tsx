@@ -1,9 +1,14 @@
 import { useState } from "react";
 import {
+  ArrowPathRoundedSquareIcon,
   Cog8ToothIcon,
   DocumentCheckIcon,
+  ExclamationCircleIcon,
   GlobeAltIcon,
   HomeIcon,
+  LightBulbIcon,
+  LockClosedIcon,
+  MagnifyingGlassIcon,
 } from "./components/Icons";
 
 export default function MyDashboard() {
@@ -157,35 +162,51 @@ export default function MyDashboard() {
             {/* Control Panel */}
             <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
               <div>
-                <h3 className="font-bold text-slate-900 mb-2">
-                  💡 Advanced Order Dispatch Control
+                <h3 className="flex items-center-safe gap-2 font-bold text-slate-900 mb-2">
+                  <div className="flex-none size-5 text-amber-500">
+                    <LightBulbIcon />
+                  </div>
+                  Advanced Order Dispatch Control
                 </h3>
+
                 <p className="text-xs text-slate-500 mb-4">
                   This section contains sensitive order parameter adjustments.
                   All actions will be strictly logged and audited.
                 </p>
 
                 <div className="space-y-2">
-                  <button className="w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
-                    🔍 Review Unresolved Orders
+                  <button className="flex items-center-safe gap-2 w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
+                    <div className="flex-none size-5">
+                      <MagnifyingGlassIcon />
+                    </div>
+                    Review Unresolved Orders
                   </button>
-                  <button className="w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
-                    🔄 Resume Order Confirmation
+                  <button className="flex items-center-safe gap-2 w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
+                    <div className="flex-none size-5">
+                      <ArrowPathRoundedSquareIcon />
+                    </div>
+                    Resume Order Confirmation
                   </button>
                 </div>
               </div>
 
               <div className="mt-6 pt-4 border-t border-slate-200">
                 {currentRole === "admin" ? (
-                  <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all">
-                    🚨 Force Execute Auto Confirmation (Admin Only)
+                  <button className="flex items-center-safe gap-2 w-full bg-red-600 hover:bg-red-700 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all">
+                    <div className="flex-none size-5">
+                      <ExclamationCircleIcon />
+                    </div>
+                    Force Execute Auto Confirmation (Admin Only)
                   </button>
                 ) : (
                   <button
                     disabled
-                    className="w-full bg-slate-100 text-slate-400 font-medium text-sm py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-200 transition-all"
+                    className="flex items-center-safe gap-2 w-full bg-slate-100 text-slate-400 font-medium text-sm py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-200 transition-all"
                   >
-                    🔒 Action Locked (Insufficient Permissions)
+                    <div className="flex-none size-5">
+                      <LockClosedIcon />
+                    </div>
+                    Action Locked (Insufficient Permissions)
                   </button>
                 )}
               </div>
