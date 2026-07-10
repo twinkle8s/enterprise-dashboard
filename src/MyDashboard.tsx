@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Cog8ToothIcon,
   DocumentCheckIcon,
@@ -6,10 +7,14 @@ import {
 } from "./components/Icons";
 
 export default function MyDashboard() {
+  const [currentRole, setCurrentRole] = useState<"admin" | "user" | "guest">(
+    "admin",
+  );
+
   return (
     <div className="flex min-h-screen w-full bg-slate-50 text-slate-800 font-sans">
       {/* Left Sidebar */}
-      <aside className="w-64 bg-slate-950 text-white p-6">
+      <aside className="w-64 bg-slate-950 text-white flex flex-col justify-between p-6">
         <div>
           {/* Application Logo & Name */}
           <div className="flex items-center-safe gap-3 mb-8">
@@ -20,6 +25,7 @@ export default function MyDashboard() {
               ORDER_CENTER
             </div>
           </div>
+
           {/* Navigation */}
           <nav className="space-y-1">
             <a
@@ -51,7 +57,35 @@ export default function MyDashboard() {
             </a>
           </nav>
         </div>
+
         {/* Bottom User Info & Role Switcher */}
+        <div className="border-t border-slate-800 pt-4 space-y-3">
+          <div className="flex items-center-safe gap-3 px-2">
+            <div className="h-9 w-9 rounded-full bg-slate-700 flex items-center justify-center text-sm font-semibold border border-slate-600">
+              YC
+            </div>
+            <div>
+              <p className="text-sm font-medium text-slate-200">YiChun Tseng</p>
+              <p className="text-xs text-slate-400 capitalize">
+                Role: {currentRole}
+              </p>
+            </div>
+          </div>
+          <div className="px-2">
+            <label className="block text-[10px] uppercase text-slate-500 font-bold mb-1">
+              SIMULATE ROLE
+            </label>
+            <select
+              value={currentRole}
+              onChange={(e) => setCurrentRole(e.target.value as never)}
+              className="w-full bg-slate-900 border border-slate-800 text-xs rounded-md px-2.5 py-1.5 text-slate-300 focus:outline-none focus:border-blue-500 transition-all"
+            >
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+              <option value="guest">Guest</option>
+            </select>
+          </div>
+        </div>
       </aside>
 
       {/* Right Main Content */}
@@ -142,9 +176,18 @@ export default function MyDashboard() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-slate-200">
-                <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all">
-                  🚨 Force Execute Auto Confirmation (Admin Only)
-                </button>
+                {currentRole === "admin" ? (
+                  <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all">
+                    🚨 Force Execute Auto Confirmation (Admin Only)
+                  </button>
+                ) : (
+                  <button
+                    disabled
+                    className="w-full bg-slate-100 text-slate-400 font-medium text-sm py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-200 transition-all"
+                  >
+                    🔒 Action Locked (Insufficient Permissions)
+                  </button>
+                )}
               </div>
             </div>
           </section>
