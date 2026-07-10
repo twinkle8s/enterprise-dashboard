@@ -53,11 +53,12 @@ export default function MyDashboard() {
         </div>
         {/* Bottom User Info & Role Switcher */}
       </aside>
+
       {/* Right Main Content */}
-      <main className="flex-1">
-        {/* Top Header */}
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8">
-          <h1 className="text-xl font-bold text-slate-900 tracking-tight">
+      <main className="flex-1 flex flex-col min-w-0 overflow-y-auto">
+        {/* Header */}
+        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 shrink-0">
+          <h1 className="text-xl font-bold text-slate-900">
             Order Overview Dashboard
           </h1>
           <div className="flex items-center">
@@ -67,6 +68,87 @@ export default function MyDashboard() {
             </span>
           </div>
         </header>
+
+        {/* Container */}
+        <div className="p-8 space-y-6 max-w-7xl w-full mx-auto">
+          {/* Summary Cards */}
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+              <p className="text-sm font-medium text-slate-500">
+                Today's Total Orders
+              </p>
+              <p className="text-3xl font-bold text-slate-900 mt-2">
+                421{" "}
+                <span className="text-sm font-normal text-slate-400">
+                  orders
+                </span>
+              </p>
+            </div>
+            <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+              <p className="text-sm font-medium text-slate-500">
+                Unresolved Orders
+              </p>
+              <p className="text-3xl font-bold text-amber-600 mt-2">
+                3{" "}
+                <span className="text-sm font-normal text-slate-400">
+                  cases
+                </span>
+              </p>
+            </div>
+            <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+              <p className="text-sm font-medium text-slate-500">
+                Order Automation Rate
+              </p>
+              <p className="text-3xl font-bold text-emerald-600 mt-2">94.2%</p>
+            </div>
+          </section>
+
+          {/* Core Chart and Controls */}
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Chart Area */}
+            <div className="lg:col-span-2 p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between min-h-75">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-bold text-slate-900">
+                  Real-time Order Trends
+                </h3>
+                <span className="text-xs text-slate-400">
+                  Auto-refreshing every 2s
+                </span>
+              </div>
+              <div className="flex-1 bg-slate-50 rounded-lg border border-dashed border-slate-300 flex items-center justify-center text-slate-400 text-sm font-medium">
+                [ Chart.js Order Analytics Placeholder ]
+              </div>
+            </div>
+
+            {/* Control Panel */}
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <h3 className="font-bold text-slate-900 mb-2">
+                  💡 Advanced Order Dispatch Control
+                </h3>
+                <p className="text-xs text-slate-500 mb-4">
+                  This section contains sensitive order parameter adjustments.
+                  All actions will be strictly logged and audited.
+                </p>
+
+                <div className="space-y-2">
+                  <button className="w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
+                    🔍 Review Unresolved Orders
+                  </button>
+                  <button className="w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
+                    🔄 Resume Order Confirmation
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-200">
+                <button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all">
+                  🚨 Force Execute Auto Confirmation (Admin Only)
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
     </div>
   );
