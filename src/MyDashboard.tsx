@@ -1,6 +1,8 @@
 import type { RootState } from "./store/store";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setRole, type UserRole } from "./store/authSlice";
+import { simulateLiveUpdate } from "./store/dataSlice";
 import {
   ArrowPathRoundedSquareIcon,
   Cog8ToothIcon,
@@ -15,7 +17,17 @@ import {
 
 export default function MyDashboard() {
   const currentRole = useSelector((state: RootState) => state.auth.currentRole);
+  const data = useSelector((state: RootState) => state.data);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      dispatch(simulateLiveUpdate(Math.random()));
+    }, 2000);
+
+    return () => clearInterval(timer);
+  }, [dispatch]);
 
   return (
     <div className="flex min-h-screen w-full bg-slate-50 text-slate-800 font-sans">
@@ -118,7 +130,7 @@ export default function MyDashboard() {
                 Today's Total Orders
               </p>
               <p className="text-3xl font-bold text-slate-900 mt-2">
-                421{" "}
+                {data.totalOrders}
                 <span className="text-sm font-normal text-slate-400">
                   orders
                 </span>
@@ -129,7 +141,7 @@ export default function MyDashboard() {
                 Unresolved Orders
               </p>
               <p className="text-3xl font-bold text-amber-600 mt-2">
-                3{" "}
+                {data.unresolvedOrders}
                 <span className="text-sm font-normal text-slate-400">
                   cases
                 </span>
@@ -139,7 +151,9 @@ export default function MyDashboard() {
               <p className="text-sm font-medium text-slate-500">
                 Order Automation Rate
               </p>
-              <p className="text-3xl font-bold text-emerald-600 mt-2">94.2%</p>
+              <p className="text-3xl font-bold text-emerald-600 mt-2">
+                {data.automationRate.toFixed(1)}%
+              </p>
             </div>
           </section>
 
