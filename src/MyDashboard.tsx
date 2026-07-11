@@ -1,4 +1,6 @@
-import { useState } from "react";
+import type { RootState } from "./store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setRole, type UserRole } from "./store/authSlice";
 import {
   ArrowPathRoundedSquareIcon,
   Cog8ToothIcon,
@@ -12,9 +14,8 @@ import {
 } from "./components/Icons";
 
 export default function MyDashboard() {
-  const [currentRole, setCurrentRole] = useState<"admin" | "user" | "guest">(
-    "admin",
-  );
+  const currentRole = useSelector((state: RootState) => state.auth.currentRole);
+  const dispatch = useDispatch();
 
   return (
     <div className="flex min-h-screen w-full bg-slate-50 text-slate-800 font-sans">
@@ -82,7 +83,7 @@ export default function MyDashboard() {
             </label>
             <select
               value={currentRole}
-              onChange={(e) => setCurrentRole(e.target.value as never)}
+              onChange={(e) => dispatch(setRole(e.target.value as UserRole))}
               className="w-full bg-slate-900 border border-slate-800 text-xs rounded-md px-2.5 py-1.5 text-slate-300 focus:outline-none focus:border-blue-500 transition-all"
             >
               <option value="admin">Admin</option>
