@@ -14,6 +14,7 @@ import {
   LockClosedIcon,
   MagnifyingGlassIcon,
 } from "./components/Icons";
+import { OrderTrendChart } from "./components/OrderTrendChart";
 
 export default function MyDashboard() {
   const currentRole = useSelector((state: RootState) => state.auth.currentRole);
@@ -169,9 +170,7 @@ export default function MyDashboard() {
                   Auto-refreshing every 2s
                 </span>
               </div>
-              <div className="flex-1 bg-slate-50 rounded-lg border border-dashed border-slate-300 flex items-center justify-center text-slate-400 text-sm font-medium">
-                [ Chart.js Order Analytics Placeholder ]
-              </div>
+              <OrderTrendChart />
             </div>
 
             {/* Control Panel */}
