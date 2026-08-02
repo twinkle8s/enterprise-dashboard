@@ -1,8 +1,9 @@
 import type { RootState } from "./store/store";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "./store/hooks";
 import { setRole, type UserRole } from "./store/authSlice";
-import { simulateLiveUpdate } from "./store/dataSlice";
+import { forceExecuteOrder, simulateLiveUpdate } from "./store/dataSlice";
 import {
   ArrowPathRoundedSquareIcon,
   Cog8ToothIcon,
@@ -19,8 +20,9 @@ import { OrderTrendChart } from "./components/OrderTrendChart";
 export default function MyDashboard() {
   const currentRole = useSelector((state: RootState) => state.auth.currentRole);
   const data = useSelector((state: RootState) => state.data);
+  const isExecuting = useSelector((state: RootState) => state.data.isExecuting);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -206,11 +208,21 @@ export default function MyDashboard() {
 
               <div className="mt-6 pt-4 border-t border-slate-200">
                 {currentRole === "admin" ? (
-                  <button className="flex items-center-safe gap-2 w-full bg-red-600 hover:bg-red-700 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all">
+                  <button
+                    disabled={isExecuting}
+                    onClick={() => dispatch(forceExecuteOrder())}
+                    className={`flex items-center-safe gap-2 w-full ${isExecuting ? "bg-red-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"} text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all`}
+                  >
                     <div className="flex-none size-5">
-                      <ExclamationCircleIcon />
+                      {isExecuting ? (
+                        <span className="animate-spin inline-block border-2 border-white border-t-transparent rounded-full w-4 h-4" />
+                      ) : (
+                        <ExclamationCircleIcon />
+                      )}
                     </div>
-                    Force Execute Auto Confirmation (Admin Only)
+                    {isExecuting
+                      ? "Executing Auto Confirmation..."
+                      : "Force Execute Auto Confirmation (Admin Only)"}
                   </button>
                 ) : (
                   <button

@@ -1,11 +1,14 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export interface DataState {
   totalOrders: number;
   unresolvedOrders: number;
   automationRate: number;
   orderHistory: number[];
+
+  isExecuting: boolean;
+  executionStatusMessage: string | null;
 }
 
 const initialState: DataState = {
@@ -13,7 +16,18 @@ const initialState: DataState = {
   unresolvedOrders: 3,
   automationRate: 94.2,
   orderHistory: [421, 423, 419, 422, 420, 421],
+  isExecuting: false,
+  executionStatusMessage: null,
 };
+
+export const forceExecuteOrder = createAsyncThunk(
+  "data/forceExecuteOrder",
+  async () => {
+    // Simulate a delay to mimic an API call or some processing time
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    return "Auto confirmation executed successfully!";
+  },
+);
 
 export const dataSlice = createSlice({
   name: "data",
@@ -35,6 +49,20 @@ export const dataSlice = createSlice({
       const nextRate = state.automationRate + change;
       state.automationRate = Math.min(Math.max(nextRate, 93.5), 95.5); // Ensure the new rate stays within 93.5% to 95.5%
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(forceExecuteOrder.pending, (state) => {
+        state.isExecuting = true;
+        state.executionStatusMessage = null;
+      })
+      .addCase(forceExecuteOrder.fulfilled, (state, action) => {
+        // action.payload contains the success message from the async thunk
+        state.isExecuting = false;
+        state.executionStatusMessage = action.payload;
+        state.unresolvedOrders -= 1;
+        state.totalOrders += 1;
+      });
   },
 });
 
