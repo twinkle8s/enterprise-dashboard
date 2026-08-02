@@ -7,6 +7,9 @@ describe("dataSlice reducer", () => {
       totalOrders: 421,
       unresolvedOrders: 3,
       automationRate: 94.2,
+      orderHistory: [421, 423, 419, 422, 420, 421],
+      isExecuting: false,
+      executionStatusMessage: null,
     };
 
     // 2. Act: Dispatch the simulateLiveUpdate action with a specific payload
@@ -14,8 +17,13 @@ describe("dataSlice reducer", () => {
     const nextState = dataReducer(initialState, action);
 
     // 3. Assert: Check that the state has been updated correctly
-    // Check that totalOrders has incremented by 1
-    expect(nextState.totalOrders).toBe(422);
+    // Check that totalOrders has been incremented by a random variance between -2 and +2
+    expect(nextState.totalOrders).toBeGreaterThanOrEqual(
+      initialState.totalOrders - 2,
+    );
+    expect(nextState.totalOrders).toBeLessThanOrEqual(
+      initialState.totalOrders + 2,
+    );
 
     // change = (0.8 - 0.5) * 0.1 = 0.03
     // nextRate = 94.2 + 0.03 = 94.23
