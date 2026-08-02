@@ -11,8 +11,7 @@ import {
   type ChartData,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import type { RootState } from "../store/store";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../store/hooks";
 
 ChartJS.register(
   CategoryScale,
@@ -44,9 +43,7 @@ const options: ChartOptions<"line"> = {
 };
 
 export function OrderTrendChart() {
-  const orderHistory = useSelector(
-    (state: RootState) => state.data.orderHistory,
-  );
+  const orderHistory = useAppSelector((state) => state.data.orderHistory);
 
   const chartData: ChartData<"line"> = {
     labels: ["10s ago", "8s ago", "6s ago", "4s ago", "2s ago", "Now"], // X axis labels

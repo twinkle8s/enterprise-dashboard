@@ -1,7 +1,5 @@
-import type { RootState } from "./store/store";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "./store/hooks";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { setRole, type UserRole } from "./store/authSlice";
 import { forceExecuteOrder, simulateLiveUpdate } from "./store/dataSlice";
 import {
@@ -18,9 +16,9 @@ import {
 import { OrderTrendChart } from "./components/OrderTrendChart";
 
 export default function MyDashboard() {
-  const currentRole = useSelector((state: RootState) => state.auth.currentRole);
-  const data = useSelector((state: RootState) => state.data);
-  const isExecuting = useSelector((state: RootState) => state.data.isExecuting);
+  const currentRole = useAppSelector((state) => state.auth.currentRole);
+  const data = useAppSelector((state) => state.data);
+  const isExecuting = useAppSelector((state) => state.data.isExecuting);
 
   const dispatch = useAppDispatch();
 
