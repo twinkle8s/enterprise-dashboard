@@ -1,24 +1,22 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { setRole, type UserRole } from "./store/authSlice";
-import { forceExecuteOrder, simulateLiveUpdate } from "./store/dataSlice";
+import { simulateLiveUpdate } from "./store/dataSlice";
 import {
   ArrowPathRoundedSquareIcon,
   Cog8ToothIcon,
   DocumentCheckIcon,
-  ExclamationCircleIcon,
   GlobeAltIcon,
   HomeIcon,
   LightBulbIcon,
-  LockClosedIcon,
   MagnifyingGlassIcon,
 } from "./components/Icons";
 import { OrderTrendChart } from "./components/OrderTrendChart";
+import AdminButton from "./components/AdminButton";
 
 export default function MyDashboard() {
   const currentRole = useAppSelector((state) => state.auth.currentRole);
   const data = useAppSelector((state) => state.data);
-  const isExecuting = useAppSelector((state) => state.data.isExecuting);
 
   const dispatch = useAppDispatch();
 
@@ -205,34 +203,7 @@ export default function MyDashboard() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-slate-200">
-                {currentRole === "admin" ? (
-                  <button
-                    disabled={isExecuting}
-                    onClick={() => dispatch(forceExecuteOrder())}
-                    className={`flex items-center-safe gap-2 w-full ${isExecuting ? "bg-red-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"} text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all`}
-                  >
-                    <div className="flex-none size-5">
-                      {isExecuting ? (
-                        <span className="animate-spin inline-block border-2 border-white border-t-transparent rounded-full w-4 h-4" />
-                      ) : (
-                        <ExclamationCircleIcon />
-                      )}
-                    </div>
-                    {isExecuting
-                      ? "Executing Auto Confirmation..."
-                      : "Force Execute Auto Confirmation (Admin Only)"}
-                  </button>
-                ) : (
-                  <button
-                    disabled
-                    className="flex items-center-safe gap-2 w-full bg-slate-100 text-slate-400 font-medium text-sm py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-200 transition-all"
-                  >
-                    <div className="flex-none size-5">
-                      <LockClosedIcon />
-                    </div>
-                    Action Locked (Insufficient Permissions)
-                  </button>
-                )}
+                <AdminButton />
               </div>
             </div>
           </section>

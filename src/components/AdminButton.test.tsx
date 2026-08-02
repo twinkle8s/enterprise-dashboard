@@ -18,11 +18,6 @@ describe("Force Execute Button Role Control", () => {
         auth: {
           currentRole: "admin" as UserRole,
         },
-        data: {
-          totalOrders: 421,
-          unresolvedOrders: 3,
-          automationRate: 94.2,
-        },
       },
     });
     render(
@@ -51,11 +46,6 @@ describe("Force Execute Button Role Control", () => {
       preloadedState: {
         auth: {
           currentRole: "user" as UserRole,
-        },
-        data: {
-          totalOrders: 421,
-          unresolvedOrders: 3,
-          automationRate: 94.2,
         },
       },
     });
