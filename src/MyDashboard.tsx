@@ -13,6 +13,7 @@ import {
 } from "./components/Icons";
 import { OrderTrendChart } from "./components/OrderTrendChart";
 import AdminButton from "./components/AdminButton";
+import Toast from "./components/Toast";
 
 export default function MyDashboard() {
   const currentRole = useAppSelector((state) => state.auth.currentRole);
@@ -30,6 +31,9 @@ export default function MyDashboard() {
 
   return (
     <div className="flex min-h-screen w-full bg-slate-50 text-slate-800 font-sans">
+      {/* Toast Notification */}
+      <Toast />
+
       {/* Left Sidebar */}
       <aside className="w-64 bg-slate-950 text-white flex flex-col justify-between p-6">
         <div>

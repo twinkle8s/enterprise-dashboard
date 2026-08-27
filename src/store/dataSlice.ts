@@ -49,6 +49,9 @@ export const dataSlice = createSlice({
       const nextRate = state.automationRate + change;
       state.automationRate = Math.min(Math.max(nextRate, 93.5), 95.5); // Ensure the new rate stays within 93.5% to 95.5%
     },
+    clearExecutionMessage: (state) => {
+      state.executionStatusMessage = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -66,6 +69,6 @@ export const dataSlice = createSlice({
   },
 });
 
-export const { simulateLiveUpdate } = dataSlice.actions;
+export const { simulateLiveUpdate, clearExecutionMessage } = dataSlice.actions;
 
 export default dataSlice.reducer;
