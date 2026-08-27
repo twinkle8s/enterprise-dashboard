@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ReferencePage from "./pages/ReferencePage"; // Reference solution page
-import OverviewPage from "./pages/OverviewPage"; // My practice dashboard page
+import OverviewPage from "./pages/OverviewPage"; // My practice page
+import Sidebar from "./components/Sidebar";
+import Toast from "./components/Toast";
 
 function App() {
   // mode state to switch between practice and reference
@@ -23,7 +25,17 @@ function App() {
         </button>
       </div>
 
-      {mode === "practice" ? <OverviewPage /> : <ReferencePage />}
+      {mode === "practice" ? (
+        <div className="flex min-h-screen w-full bg-slate-50 text-slate-800 font-sans">
+          <Sidebar />
+          <main className="flex-1 flex flex-col min-w-0 overflow-y-auto">
+            <Toast />
+            <OverviewPage />
+          </main>
+        </div>
+      ) : (
+        <ReferencePage />
+      )}
     </div>
   );
 }
