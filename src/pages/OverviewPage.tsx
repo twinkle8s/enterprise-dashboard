@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { setRole, type UserRole } from "./store/authSlice";
-import { simulateLiveUpdate } from "./store/dataSlice";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { setRole, type UserRole } from "../store/authSlice";
+import { simulateLiveUpdate } from "../store/dataSlice";
 import {
   ArrowPathRoundedSquareIcon,
   Cog8ToothIcon,
@@ -10,12 +10,12 @@ import {
   HomeIcon,
   LightBulbIcon,
   MagnifyingGlassIcon,
-} from "./components/Icons";
-import { OrderTrendChart } from "./components/OrderTrendChart";
-import AdminButton from "./components/AdminButton";
-import Toast from "./components/Toast";
+} from "../components/Icons";
+import { OrderTrendChart } from "../components/OrderTrendChart";
+import AdminButton from "../components/AdminButton";
+import Toast from "../components/Toast";
 
-export default function MyDashboard() {
+export default function OverviewPage() {
   const currentRole = useAppSelector((state) => state.auth.currentRole);
   const data = useAppSelector((state) => state.data);
 

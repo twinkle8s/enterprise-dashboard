@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import authReducer, { type UserRole } from "../store/authSlice";
 import dataReducer from "../store/dataSlice";
-import MyDashboard from "../MyDashboard";
+import OverviewPage from "../pages/OverviewPage";
 
 describe("Force Execute Button Role Control", () => {
   it("should be ENABLED when the state role is Admin", () => {
@@ -22,7 +22,7 @@ describe("Force Execute Button Role Control", () => {
     });
     render(
       <Provider store={store}>
-        <MyDashboard />
+        <OverviewPage />
       </Provider>,
     );
 
@@ -51,7 +51,7 @@ describe("Force Execute Button Role Control", () => {
     });
     render(
       <Provider store={store}>
-        <MyDashboard />
+        <OverviewPage />
       </Provider>,
     );
 

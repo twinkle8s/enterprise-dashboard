@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ReferenceApp from "./ReferenceApp"; // Reference solution page
-import MyDashboard from "./MyDashboard"; // My practice dashboard page
+import ReferencePage from "./pages/ReferencePage"; // Reference solution page
+import OverviewPage from "./pages/OverviewPage"; // My practice dashboard page
 
 function App() {
   // mode state to switch between practice and reference
@@ -23,7 +23,7 @@ function App() {
         </button>
       </div>
 
-      {mode === "practice" ? <MyDashboard /> : <ReferenceApp />}
+      {mode === "practice" ? <OverviewPage /> : <ReferencePage />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ReferenceApp() {
+export default function ReferencePage() {
   // 建立一個暫時的權限狀態，方便我們晚點測試畫面元件切換
   const [currentRole, setCurrentRole] = useState<"admin" | "user" | "guest">(
     "admin",
