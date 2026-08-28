@@ -61,7 +61,7 @@ export default function OverviewPage() {
           {/* Control Panel */}
           <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
             <div>
-              <h3 className="flex items-center-safe gap-2 font-bold text-slate-900 mb-2">
+              <h3 className="flex items-center gap-2 font-bold text-slate-900 mb-2">
                 <div className="flex-none size-5 text-amber-500">
                   <LightBulbIcon />
                 </div>
@@ -74,13 +74,13 @@ export default function OverviewPage() {
               </p>
 
               <div className="space-y-2">
-                <button className="flex items-center-safe gap-2 w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
+                <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
                   <div className="flex-none size-5">
                     <MagnifyingGlassIcon />
                   </div>
                   Review Unresolved Orders
                 </button>
-                <button className="flex items-center-safe gap-2 w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
+                <button className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm rounded bg-slate-50 border border-slate-200 font-medium text-slate-700 hover:bg-slate-100 transition-all">
                   <div className="flex-none size-5">
                     <ArrowPathRoundedSquareIcon />
                   </div>

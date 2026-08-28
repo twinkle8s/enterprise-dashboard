@@ -17,7 +17,7 @@ export default function AutoConfirmButton() {
         <button
           disabled={isExecuting}
           onClick={() => dispatch(forceExecuteOrder())}
-          className={`flex items-center-safe gap-2 w-full ${isExecuting ? "bg-red-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"} text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all`}
+          className={`flex items-center gap-2 w-full ${isExecuting ? "bg-red-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"} text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-red-100 transition-all`}
         >
           <div className="flex-none size-5">
             {isExecuting ? (
@@ -33,7 +33,7 @@ export default function AutoConfirmButton() {
       ) : (
         <button
           disabled
-          className="flex items-center-safe gap-2 w-full bg-slate-100 text-slate-400 font-medium text-sm py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-200 transition-all"
+          className="flex items-center gap-2 w-full bg-slate-100 text-slate-400 font-medium text-sm py-2.5 px-4 rounded-lg cursor-not-allowed border border-slate-200 transition-all"
         >
           <div className="flex-none size-5">
             <LockClosedIcon />

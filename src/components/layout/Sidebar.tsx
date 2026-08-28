@@ -17,7 +17,7 @@ export default function Sidebar() {
     <aside className="w-64 bg-slate-950 text-white flex flex-col justify-between p-6">
       <div>
         {/* Application Logo & Name */}
-        <div className="flex items-center-safe gap-3 mb-8">
+        <div className="flex items-center gap-3 mb-8">
           <div className="h-8 w-8 bg-blue-600 rounded-lg p-1.5">
             <GlobeAltIcon />
           </div>
@@ -31,7 +31,7 @@ export default function Sidebar() {
           <NavLink
             to="/overview"
             className={({ isActive }) =>
-              `flex items-center-safe gap-2 px-3 py-2.5 rounded-lg transition-all ${
+              `flex items-center gap-2 px-3 py-2.5 rounded-lg transition-all ${
                 isActive
                   ? "bg-blue-600 text-white font-medium"
                   : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
@@ -47,7 +47,7 @@ export default function Sidebar() {
           <NavLink
             to="/confirmation"
             className={({ isActive }) =>
-              `flex items-center-safe gap-2 px-3 py-2.5 rounded-lg transition-all ${
+              `flex items-center gap-2 px-3 py-2.5 rounded-lg transition-all ${
                 isActive
                   ? "bg-blue-600 text-white font-medium"
                   : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
@@ -63,7 +63,7 @@ export default function Sidebar() {
           <NavLink
             to="/maintenance"
             className={({ isActive }) =>
-              `flex items-center-safe gap-2 px-3 py-2.5 rounded-lg transition-all ${
+              `flex items-center gap-2 px-3 py-2.5 rounded-lg transition-all ${
                 isActive
                   ? "bg-blue-600 text-white font-medium"
                   : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
@@ -80,7 +80,7 @@ export default function Sidebar() {
             <NavLink
               to="/privilege-control"
               className={({ isActive }) =>
-                `flex items-center-safe gap-2 px-3 py-2.5 rounded-lg transition-all ${
+                `flex items-center gap-2 px-3 py-2.5 rounded-lg transition-all ${
                   isActive
                     ? "bg-blue-600 text-white font-medium"
                     : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
@@ -98,7 +98,7 @@ export default function Sidebar() {
 
       {/* Bottom User Info & Role Switcher */}
       <div className="border-t border-slate-800 pt-4 space-y-3">
-        <div className="flex items-center-safe gap-3 px-2">
+        <div className="flex items-center gap-3 px-2">
           <div className="h-9 w-9 rounded-full bg-slate-700 flex items-center justify-center text-sm font-semibold border border-slate-600">
             YC
           </div>
