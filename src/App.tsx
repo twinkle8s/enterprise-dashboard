@@ -6,6 +6,8 @@ import Sidebar from "./components/layout/Sidebar";
 import Toast from "./components/common/Toast";
 import ConfirmationPage from "./pages/confirmation/ConfirmationPage";
 import MaintenancePage from "./pages/maintenance/MaintenancePage";
+import PrivilegeControlPage from "./pages/privilege-control/PrivilegeControlPage";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 
 function App() {
   // mode state to switch between practice and reference
@@ -39,6 +41,14 @@ function App() {
               <Route path="/overview" element={<OverviewPage />} />
               <Route path="/confirmation" element={<ConfirmationPage />} />
               <Route path="/maintenance" element={<MaintenancePage />} />
+              <Route
+                path="/privilege-control"
+                element={
+                  <ProtectedRoute allowedRoles={["admin"]}>
+                    <PrivilegeControlPage />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </main>
         </div>

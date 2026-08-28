@@ -6,6 +6,7 @@ import {
   DocumentCheckIcon,
   GlobeAltIcon,
   HomeIcon,
+  ShieldCheckIcon,
 } from "../common/Icons";
 
 export default function Sidebar() {
@@ -58,6 +59,7 @@ export default function Sidebar() {
             </div>
             Order Confirmation
           </NavLink>
+
           <NavLink
             to="/maintenance"
             className={({ isActive }) =>
@@ -73,6 +75,24 @@ export default function Sidebar() {
             </div>
             Order Maintenance
           </NavLink>
+
+          {currentRole === "admin" && (
+            <NavLink
+              to="/privilege-control"
+              className={({ isActive }) =>
+                `flex items-center-safe gap-2 px-3 py-2.5 rounded-lg transition-all ${
+                  isActive
+                    ? "bg-blue-600 text-white font-medium"
+                    : "text-slate-400 hover:bg-slate-900 hover:text-slate-200"
+                }`
+              }
+            >
+              <div className="size-5">
+                <ShieldCheckIcon />
+              </div>
+              Privilege Control
+            </NavLink>
+          )}
         </nav>
       </div>
 
