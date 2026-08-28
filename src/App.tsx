@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import ReferencePage from "./pages/reference/ReferencePage"; // Reference solution page
 import OverviewPage from "./pages/overview/OverviewPage"; // My practice page
 import Sidebar from "./components/layout/Sidebar";
 import Toast from "./components/common/Toast";
+import ConfirmationPage from "./pages/confirmation/ConfirmationPage";
+import MaintenancePage from "./pages/maintenance/MaintenancePage";
 
 function App() {
   // mode state to switch between practice and reference
@@ -26,14 +29,21 @@ function App() {
       </div>
 
       {mode === "practice" ? (
+        // Main layout for my practice application
         <div className="flex min-h-screen w-full bg-slate-50 text-slate-800 font-sans">
           <Sidebar />
           <main className="flex-1 flex flex-col min-w-0 overflow-y-auto">
             <Toast />
-            <OverviewPage />
+            <Routes>
+              <Route path="/" element={<Navigate to="/overview" replace />} />
+              <Route path="/overview" element={<OverviewPage />} />
+              <Route path="/confirmation" element={<ConfirmationPage />} />
+              <Route path="/maintenance" element={<MaintenancePage />} />
+            </Routes>
           </main>
         </div>
       ) : (
+        // Reference solution page
         <ReferencePage />
       )}
     </div>
