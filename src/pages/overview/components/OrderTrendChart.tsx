@@ -11,7 +11,7 @@ import {
   type ChartData,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector } from "../../../store/hooks";
 
 ChartJS.register(
   CategoryScale,

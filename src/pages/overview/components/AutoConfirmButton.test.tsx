@@ -2,9 +2,9 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import authReducer, { type UserRole } from "../store/authSlice";
-import dataReducer from "../store/dataSlice";
-import OverviewPage from "../pages/OverviewPage";
+import authReducer, { type UserRole } from "../../../store/authSlice";
+import dataReducer from "../../../store/dataSlice";
+import OverviewPage from "../OverviewPage";
 
 describe("Force Execute Button Role Control", () => {
   it("should be ENABLED when the state role is Admin", () => {

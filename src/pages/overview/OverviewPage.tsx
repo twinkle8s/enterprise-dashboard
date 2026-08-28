@@ -1,16 +1,16 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { simulateLiveUpdate } from "../store/dataSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { simulateLiveUpdate } from "../../store/dataSlice";
 import {
   ArrowPathRoundedSquareIcon,
   LightBulbIcon,
   MagnifyingGlassIcon,
-} from "../components/Icons";
-import { OrderTrendChart } from "../components/OrderTrendChart";
-import AdminButton from "../components/AdminButton";
+} from "../../components/common/Icons";
+import { OrderTrendChart } from "./components/OrderTrendChart";
+import AutoConfirmButton from "./components/AutoConfirmButton";
+import SummaryCards from "./components/SummaryCards";
 
 export default function OverviewPage() {
-  const data = useAppSelector((state) => state.data);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -40,32 +40,7 @@ export default function OverviewPage() {
       <div className="p-8 space-y-6 max-w-7xl w-full mx-auto">
         {/* Summary Cards */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-            <p className="text-sm font-medium text-slate-500">
-              Today's Total Orders
-            </p>
-            <p className="text-3xl font-bold text-slate-900 mt-2">
-              {data.totalOrders}
-              <span className="text-sm font-normal text-slate-400">orders</span>
-            </p>
-          </div>
-          <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-            <p className="text-sm font-medium text-slate-500">
-              Unresolved Orders
-            </p>
-            <p className="text-3xl font-bold text-amber-600 mt-2">
-              {data.unresolvedOrders}
-              <span className="text-sm font-normal text-slate-400">cases</span>
-            </p>
-          </div>
-          <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-            <p className="text-sm font-medium text-slate-500">
-              Order Automation Rate
-            </p>
-            <p className="text-3xl font-bold text-emerald-600 mt-2">
-              {data.automationRate.toFixed(1)}%
-            </p>
-          </div>
+          <SummaryCards />
         </section>
 
         {/* Core Chart and Controls */}
@@ -115,7 +90,7 @@ export default function OverviewPage() {
             </div>
 
             <div className="mt-6 pt-4 border-t border-slate-200">
-              <AdminButton />
+              <AutoConfirmButton />
             </div>
           </div>
         </section>

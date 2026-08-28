@@ -1,8 +1,11 @@
-import { forceExecuteOrder } from "../store/dataSlice";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { ExclamationCircleIcon, LockClosedIcon } from "./Icons";
+import { forceExecuteOrder } from "../../../store/dataSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import {
+  ExclamationCircleIcon,
+  LockClosedIcon,
+} from "../../../components/common/Icons";
 
-export default function AdminButton() {
+export default function AutoConfirmButton() {
   const currentRole = useAppSelector((state) => state.auth.currentRole);
   const isExecuting = useAppSelector((state) => state.data.isExecuting);
 

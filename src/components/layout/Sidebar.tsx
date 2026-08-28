@@ -1,11 +1,11 @@
-import { setRole, type UserRole } from "../store/authSlice";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { setRole, type UserRole } from "../../store/authSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   Cog8ToothIcon,
   DocumentCheckIcon,
   GlobeAltIcon,
   HomeIcon,
-} from "./Icons";
+} from "../common/Icons";
 
 export default function Sidebar() {
   const currentRole = useAppSelector((state) => state.auth.currentRole);

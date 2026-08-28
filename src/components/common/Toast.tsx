@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { clearExecutionMessage } from "../store/dataSlice";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { clearExecutionMessage } from "../../store/dataSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 export default function Toast() {
   const message = useAppSelector((state) => state.data.executionStatusMessage);

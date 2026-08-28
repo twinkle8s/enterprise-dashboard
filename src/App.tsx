@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ReferencePage from "./pages/ReferencePage"; // Reference solution page
-import OverviewPage from "./pages/OverviewPage"; // My practice page
-import Sidebar from "./components/Sidebar";
-import Toast from "./components/Toast";
+import ReferencePage from "./pages/reference/ReferencePage"; // Reference solution page
+import OverviewPage from "./pages/overview/OverviewPage"; // My practice page
+import Sidebar from "./components/layout/Sidebar";
+import Toast from "./components/common/Toast";
 
 function App() {
   // mode state to switch between practice and reference
