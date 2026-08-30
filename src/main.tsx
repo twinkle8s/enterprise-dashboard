@@ -9,7 +9,7 @@ import { store } from "./store/store.ts";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/enterprise-dashboard">
         <App />
       </BrowserRouter>
     </Provider>
