@@ -6,10 +6,15 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./store/store.ts";
 
+const basename =
+  import.meta.env.VITE_GITHUB_ACTIONS === "true"
+    ? "/enterprise-dashboard"
+    : "/";
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/enterprise-dashboard">
+      <BrowserRouter basename={basename}>
         <App />
       </BrowserRouter>
     </Provider>
